@@ -11,6 +11,7 @@ db.init_app(app)
 @app.route('/1')
 def homepage():  # put application's code here
     result = models.students.query.all()
+    print("ywt1")
     return render_template('homepage.html', list=result)
 
 
