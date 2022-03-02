@@ -26,7 +26,7 @@
           <span>会员信息</span>
         </template>
         <el-switch v-model="isVIP" @change="changeVIPState"></el-switch>
-        <span v-if=this.isVIP>会员用户</span>
+        <span v-if="this.isVIP">会员用户</span>
         <span v-else>普通用户</span>
       </el-descriptions-item>
     </el-descriptions>

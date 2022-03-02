@@ -29,11 +29,11 @@
           <el-dropdown>
             <i class="el-icon-setting" style="margin-right: 15px"></i>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="toUserCenter()">用户中心</el-dropdown-item>
-              <el-dropdown-item @click.native="toLogout()">退出登录</el-dropdown-item>
+              <el-dropdown-item @click.native="toUserCenter">用户中心</el-dropdown-item>
+              <el-dropdown-item @click.native="toLogout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-          <span>{{$store.getters.getUser.name}} @ {{$store.getters.getUser.email}}</span>
+          <span>{{this.$store.getters.getUser.name}} @ {{this.$store.getters.getUser.email}}</span>
         </el-header>
         <el-main>
           <router-view />
@@ -49,7 +49,7 @@ export default {
   methods: {
     toUserCenter () {
       setTimeout(() => {
-      this.$router.push('/user-center')
+        this.$router.push('/user-center')
       }, 100)
     },
     toLogout () {
