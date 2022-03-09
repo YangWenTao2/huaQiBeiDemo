@@ -42,11 +42,7 @@ def updateVIPState():
     email = data['email']
     isVIP = data['isVIP']
 
-@app.route('/search')
-def updateVIPState():
-    data = json.loads(request.form.get('data'))
-    email = data['email']
-    isVIP = data['isVIP']
+
 
 if __name__ == '__main__':
     app.config.from_object(config)

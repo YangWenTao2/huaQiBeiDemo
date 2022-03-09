@@ -9,14 +9,14 @@ class students(db.Model):
 
 
 class num_beta(db.Model):
-    CompanyNo = db.Column(db.String(6))
+    CompanyNo = db.Column(db.String(6),primary_key=True)
     endDate = db.Column(db.String)
     beta=db.Column(db.Float)
 
 
 class user(db.Model):
     name=db.Column(db.String(100))
-    email =db.Column(db.String(30))
+    email =db.Column(db.String(30),primary_key=True)
     isvip = db.Column(db.String(5))
     Pass = db.Column(db.String(19))
 
