@@ -15,10 +15,14 @@ db.init_app(app)
 
 @app.route('/register')
 def register():
-    data = json.loads(request.form.get('data'))
-    name = data['name']
+    #data = json.loads(request.form.get('data'))
+    """  name = data['name']
     email = data['email']
-    password = data['password']
+    password = data['password']"""
+    #test:
+    name="ywt"
+    email="303597673@qq.com"
+    password="ygwt010825"
     if( models.user.query.filter_by(name=name).first()!=None or models.user.query.filter_by(email=email).first()!=None):
         return 1
     else:
@@ -33,8 +37,14 @@ def login():
     data = json.loads(request.form.get('data'))
     email = data['email']
     password = data['password']
-    return 1
-
+    if(models.user.query.filter_by(email=email).first()!=None):
+        ThisUser=models.user.query.filter_by(email=email).first()
+        if password == ThisUser.Pass :
+            return 0
+        else:
+            return 2
+    else:
+        return 2
 
 @app.route('/updateVIPState')
 def updateVIPState():
@@ -45,6 +55,5 @@ def updateVIPState():
 
 
 if __name__ == '__main__':
-    app.config.from_object(config)
-    db.init_app(app)
+
     app.run()
