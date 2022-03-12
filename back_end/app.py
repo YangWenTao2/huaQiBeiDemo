@@ -26,7 +26,7 @@ def register():
     if( models.user.query.filter_by(name=name).first()!=None or models.user.query.filter_by(email=email).first()!=None):
         return 1
     else:
-        new = user(name, 0, email, password)
+        new = user(name, "false", email, password)
         db.session.add(new)
         db.session.commtit()
         return 0
@@ -51,6 +51,9 @@ def updateVIPState():
     data = json.loads(request.form.get('data'))
     email = data['email']
     isVIP = data['isVIP']
+    user=models.user.query.get(email)
+    user.isvip=isVIP
+    db.set_trace().commit()
 
 
 
