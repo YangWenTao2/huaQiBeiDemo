@@ -13,7 +13,7 @@ db.init_app(app)
 
 
 
-@app.route('/register')
+@app.route('/register' )
 def register():
     #data = json.loads(request.form.get('data'))
     """  name = data['name']

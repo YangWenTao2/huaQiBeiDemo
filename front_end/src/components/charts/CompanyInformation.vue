@@ -1,11 +1,11 @@
 <template>
   <div>
-    我是选项一 id={{$route.params.id}}
+    企业信息
   </div>
 </template>
 
 <script>
 export default {
-  name: 'temp1'
+  name: 'CompanyInformation'
 }
 </script>

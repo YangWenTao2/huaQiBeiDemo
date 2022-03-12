@@ -7,7 +7,7 @@ import axios from 'axios'
 import Vuex from 'vuex'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import echarts from 'echarts'
+import * as echarts from 'echarts'
 import store from './storage/index.js'
 
 Vue.use(ElementUI)
@@ -23,15 +23,21 @@ router.beforeEach((to, from, next) => {
   var isLogin = sessionStorage.getItem('isLogin')
   if (to.path === '/logout') {
     sessionStorage.removeItem('isLogin')
-    next({path: '/login'})
+    next({path: '/'})
   } else if (to.path === '/login') {
     if (isLogin !== null) {
       next({path: '/user'})
     }
   } else if (isLogin === null) {
-    if (to.path !== '/register' && to.path !== '/') {
+    if (to.path !== '/' &&
+        to.path !== '/register' &&
+        to.path !== '/user-notice' &&
+        to.path !== '/user-agreement') {
       next({path: '/login'})
     }
+  }
+  if (to.path === '/search-result') {
+    next({path: '/company-information'})
   }
   next()
 })

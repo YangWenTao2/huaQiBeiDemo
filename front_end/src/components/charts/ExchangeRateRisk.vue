@@ -1,11 +1,11 @@
 <template>
   <div>
-    我是选项二
+    汇率风险
   </div>
 </template>
 
 <script>
 export default {
-  name: 'temp2'
+  name: 'ExchangeRateRisk'
 }
 </script>
