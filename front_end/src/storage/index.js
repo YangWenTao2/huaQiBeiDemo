@@ -9,6 +9,11 @@ const state = {
     name: '',
     email: '',
     isVIP: ''
+  },
+  companyData: {
+    data1: 0.0,
+    data2: 0.0,
+    data3: 0.0
   }
 }
 
@@ -16,6 +21,9 @@ const state = {
 const getters = {
   getUser (state) {
     return state.user
+  },
+  getCompanyData (state) {
+    return state.companyData
   }
 }
 
@@ -26,6 +34,9 @@ const mutations = {
   },
   updateVIPState (state, isVIP) {
     state.user.isVIP = isVIP ? 'true' : 'false'
+  },
+  updateCompanyData (state, data) {
+    state.companyData = data
   }
 }
 
@@ -34,8 +45,11 @@ const actions = {
   asyncUpdateUser (context, user) {
     context.commit('updateUser', user)
   },
-  asynUpdateVIPState (context, isVIP) {
+  asyncUpdateVIPState (context, isVIP) {
     context.commit('updateVIPState', isVIP)
+  },
+  asyncUpdateCompanyData (context, data) {
+    context.commit('updateCompanyData', data)
   }
 }
 

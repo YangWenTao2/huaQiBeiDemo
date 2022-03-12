@@ -1,17 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/views/Login'
-import Home from '@/views/Home'
-import Register from '@/views/Register'
 import User from '@/views/User'
-import temp1 from '@/components/temp1'
-import temp2 from '@/components/temp2'
+import Home from '@/views/Home'
+import Login from '@/views/Login'
+import Register from '@/views/Register'
+import MacroData from '@/views/MacroData'
+import UserNotice from '@/views/UserNotice'
 import UserCenter from '@/views/UserCenter'
+import SearchResult from '@/views/SearchResult'
+import UserAgreement from '@/views/UserAgreement'
+import IndustryRisk from '@/components/charts/IndustryRisk'
+import StockVolatility from '@/components/charts/StockVolatility'
+import StockSharpeRatio from '@/components/charts/StockSharpeRatio'
+import ExchangeRateRisk from '@/components/charts/ExchangeRateRisk'
+import FinancialLeverage from '@/components/charts/FinancialLeverage'
+import CompanyInformation from '@/components/charts/CompanyInformation'
+import ManagementOrganization from '@/components/charts/ManagementOrganization'
+import ForeignExchangeExposure from '@/components/charts/ForeignExchangeExposure'
 
 Vue.use(Router)
-
-// 路由管理
-// 在<router-view/>处根据routes数组中每个元素的路径path加载对应的组件
 
 export default new Router({
   routes: [
@@ -19,6 +26,16 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/user-agreement',
+      name: 'user-agreement',
+      component: UserAgreement
+    },
+    {
+      path: '/user-notice',
+      name: 'user-notice',
+      component: UserNotice
     },
     {
       path: '/login',
@@ -33,24 +50,64 @@ export default new Router({
     {
       path: '/user',
       name: 'user',
-      component: User,
-      children: [
-        {
-          path: '/temp/1/:id',
-          name: 'temp1',
-          component: temp1
-        },
-        {
-          path: '/temp/2',
-          name: 'temp2',
-          component: temp2
-        }
-      ]
+      component: User
     },
     {
       path: '/user-center',
       name: 'user-center',
       component: UserCenter
+    },
+    {
+      path: '/macro-data',
+      name: 'macro-data',
+      component: MacroData
+    },
+    {
+      path: '/search-result',
+      name: 'search-result',
+      component: SearchResult,
+      children: [
+        {
+          path: '/exchange-rate-risk',
+          name: 'exchange-rate-risk',
+          component: ExchangeRateRisk
+        },
+        {
+          path: '/financial-leverage',
+          name: 'financial-leverage',
+          component: FinancialLeverage
+        },
+        {
+          path: '/foreign-exchange-exposure',
+          name: 'foreign-exchange-exposure',
+          component: ForeignExchangeExposure
+        },
+        {
+          path: '/management-organization',
+          name: 'management-organization',
+          component: ManagementOrganization
+        },
+        {
+          path: '/stock-volatility',
+          name: 'stock-volatility',
+          component: StockVolatility
+        },
+        {
+          path: '/stock-sharpe-ratio',
+          name: 'stock-sharpe-ratio',
+          component: StockSharpeRatio
+        },
+        {
+          path: '/industry-risk',
+          name: 'industry-risk',
+          component: IndustryRisk
+        },
+        {
+          path: '/company-information',
+          name: 'company-information',
+          component: CompanyInformation
+        }
+      ]
     }
   ]
 })
