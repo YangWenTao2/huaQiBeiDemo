@@ -39,6 +39,7 @@
     <div id="graph-box">
       <router-view/>
     </div>
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -101,6 +102,7 @@ export default {
 .searchResultBox #graph-box {
   margin: 30px 30px;
   padding: 10px 10px;
+  height: 450px;
 }
 .searchResultBox .el-menu-item {
   border-radius: 50px;
@@ -110,5 +112,9 @@ export default {
 .searchResultBox .el-submenu__title {
   border-radius: 50px;
   letter-spacing: 2px;
+}
+.searchResultBox .footer {
+  height: 90px;
+  background-color: #303133;
 }
 </style>

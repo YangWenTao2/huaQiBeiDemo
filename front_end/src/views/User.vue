@@ -9,7 +9,7 @@
       <div class="welcome canClick" @click="toUserCenter">用户中心</div>
       <el-divider class="welcome d2" direction="vertical"></el-divider>
       <div class="welcome">
-        Welcome, {{this.$store.getters.getUser.name}}
+        Welcome, {{ this.$store.getters.getUser.name }}
       </div>
     </el-header>
     <el-main>
@@ -21,7 +21,12 @@
           placeholder="请输入公司名称"
           v-model="input"
           clearable>
-          <el-button slot="append" icon="el-icon-search" id="search" @click="handleSearch"></el-button>
+          <el-button
+            slot="append"
+            icon="el-icon-search"
+            id="search"
+            @click="handleSearch">
+          </el-button>
         </el-input>
       </el-col>
       <el-col class="popular" style="margin-right: 50px;">
@@ -32,7 +37,6 @@
           ref="singleTable"
           :data="tableData"
           highlight-current-row
-          @current-change="handleCurrentChange"
           style="width: 70%">
           <el-table-column
             type="index"
@@ -60,7 +64,9 @@
           <p><i class="el-icon-s-data"></i> 宏观数据</p>
         </el-divider>
         <el-carousel :interval="4000" type="card" height="200px">
-          <el-carousel-item v-for="item in 5" :key="item">
+          <el-carousel-item v-for="(item, index) in carouselImages" :key="index">
+            <h4 class="small">{{ item.title }}</h4>
+            <img :src="item.url" width="455px" height="150px">
           </el-carousel-item>
         </el-carousel>
         <el-divider content-position="center">
@@ -81,7 +87,7 @@ export default {
   data () {
     return {
       currentRow: null,
-      input: null,
+      input: '',
       debug: 'fdsd',
       tableData: [
         {
@@ -104,15 +110,34 @@ export default {
           address: '杭州',
           contact: 'xxxxxxxxxx'
         }
+      ],
+      carouselImages: [
+        {
+          url: require('../assets/1.png'),
+          title: '结售汇变动率'
+        },
+        {
+          url: require('../assets/2.png'),
+          title: '外汇汇率波动率'
+        },
+        {
+          url: require('../assets/3.png'),
+          title: 'GDP变动率'
+        },
+        {
+          url: require('../assets/4.png'),
+          title: '进出口变动率'
+        },
+        {
+          url: require('../assets/5.png'),
+          title: '社会销售品零售总额变动率'
+        }
       ]
     }
   },
   methods: {
     setCurrent (row) {
       this.$refs.singleTable.setCurrentRow(row)
-    },
-    handleCurrentChange (val) {
-      this.currentRow = val
     },
     handleSearch () {
       this.$router.push('/search-result')
@@ -154,7 +179,7 @@ export default {
 .searchBox .el-main {
   margin-left: 250px;
   margin-right: 250px;
-  box-shadow: 0 8px 10px rgba(0, 0, 0, .22), 0 0 6px rgba(0, 0, 0, .14);
+  box-shadow: 0 8px 20px #303133, 0 0 6px rgba(0, 0, 0, .14);
   overflow: hidden;
 }
 .searchBox .center .el-button {
@@ -205,6 +230,11 @@ export default {
 }
 .searchBox .el-carousel {
   margin: 40px auto;
+}
+.searchBox .el-carousel__item h4 {
+  line-height: 5px;
+  opacity: 0.75;
+  color: #303133;
 }
 .searchBox .popular {
   margin: 40px auto;
