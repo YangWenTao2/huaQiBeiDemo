@@ -135,7 +135,8 @@ export default {
               pass: this.registerForm.pass
             }
           }).then((response) => {
-            alert(response)
+            // alert(response)
+            console.log(response)
             this.$message({
               message: '注册成功',
               type: 'success'
