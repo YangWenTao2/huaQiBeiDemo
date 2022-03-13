@@ -132,7 +132,7 @@ export default {
             data: {
               name: this.registerForm.name,
               email: this.registerForm.email,
-              pass: this.registerForm.pass
+              password: this.registerForm.pass
             }
           }).then((response) => {
             // alert(response)
