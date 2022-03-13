@@ -8,7 +8,7 @@ class students(db.Model):
     sex = db.Column(db.Integer)
 
 
-class num_beta(db.Model):
+class numBeta(db.Model):
     CompanyNo = db.Column(db.String(6),primary_key=True)
     endDate = db.Column(db.String)
     beta=db.Column(db.Float)

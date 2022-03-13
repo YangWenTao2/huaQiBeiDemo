@@ -39,8 +39,8 @@ def login():
     email = data['email']
     password = data['password']
     if models.user.query.filter_by(email=email).first() is not None:
-        ThisUser = models.user.query.filter_by(email=email).first()
-        if password == ThisUser.Pass:
+        this_user = models.user.query.filter_by(email=email).first()
+        if password == this_user.Pass:
             return jsonify({"response": 0})
         else:
             return jsonify({"response": 2})
@@ -49,12 +49,12 @@ def login():
 
 
 @app.route('/updateVIPState', methods=['POST'])
-def updateVIPState():
+def update_vip_state():
     data = json.loads(request.form.get('data'))
     email = data['email']
-    isVIP = data['isVIP']
-    user = models.user.query.get(email)
-    user.isvip = isVIP
+    is_vip = data['isVIP']
+    this_user = models.user.query.get(email)
+    this_user.isvip = is_vip
     db.set_trace().commit()
 
 
