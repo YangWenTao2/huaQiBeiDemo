@@ -24,12 +24,12 @@ def register():
     password = "ygwt010825"
     if (models.user.query.filter_by(name=name).first() is not None or
             models.user.query.filter_by(email=email).first() is not None):
-        return '1'
+        return jsonify({"response":1})
     else:
         new = user(name, "false", email, password)
         db.session.add(new)
         db.session.commit()
-        return '0'
+        return jsonify({"response":2})
 
 
 @app.route('/login', methods=['POST'])
@@ -40,11 +40,11 @@ def login():
     if models.user.query.filter_by(email=email).first() is not None:
         ThisUser = models.user.query.filter_by(email=email).first()
         if password == ThisUser.Pass:
-            return 0
+            return jsonify({"response":0})
         else:
-            return 2
+            return jsonify({"response":2})
     else:
-        return 2
+        return jsonify({"response":2})
 
 
 @app.route('/updateVIPState', methods=['POST'])
