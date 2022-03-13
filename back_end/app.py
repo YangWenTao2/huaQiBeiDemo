@@ -12,51 +12,50 @@ app.config.from_object(config)
 db.init_app(app)
 
 
-
-@app.route('/register' )
+@app.route('/register', methods=['POST'])
 def register():
-    #data = json.loads(request.form.get('data'))
+    # data = json.loads(request.form.get('data'))
     """  name = data['name']
     email = data['email']
     password = data['password']"""
-    #test:
-    name="ywt"
-    email="303597673@qq.com"
-    password="ygwt010825"
-    if( models.user.query.filter_by(name=name).first()!=None or models.user.query.filter_by(email=email).first()!=None):
-        return 1
+    # test:
+    name = "ywt"
+    email = "303597673@qq.com"
+    password = "ygwt010825"
+    if (models.user.query.filter_by(name=name).first() is not None or
+            models.user.query.filter_by(email=email).first() is not None):
+        return '1'
     else:
         new = user(name, "false", email, password)
         db.session.add(new)
-        db.session.commtit()
-        return 0
-   #todo:服务器错误则RETURN 2;
+        db.session.commit()
+        return '0'
 
-@app.route('/login')
+
+@app.route('/login', methods=['POST'])
 def login():
     data = json.loads(request.form.get('data'))
     email = data['email']
     password = data['password']
-    if(models.user.query.filter_by(email=email).first()!=None):
-        ThisUser=models.user.query.filter_by(email=email).first()
-        if password == ThisUser.Pass :
+    if models.user.query.filter_by(email=email).first() is not None:
+        ThisUser = models.user.query.filter_by(email=email).first()
+        if password == ThisUser.Pass:
             return 0
         else:
             return 2
     else:
         return 2
 
-@app.route('/updateVIPState')
+
+@app.route('/updateVIPState', methods=['POST'])
 def updateVIPState():
     data = json.loads(request.form.get('data'))
     email = data['email']
     isVIP = data['isVIP']
-    user=models.user.query.get(email)
-    user.isvip=isVIP
+    user = models.user.query.get(email)
+    user.isvip = isVIP
     db.set_trace().commit()
 
 
-
 if __name__ == '__main__':
-
     app.run()
