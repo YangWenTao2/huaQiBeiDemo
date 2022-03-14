@@ -120,11 +120,6 @@ export default {
     onSubmit () {
       this.$refs['registerForm'].validate((valid) => {
         if (valid) {
-          // this.$message({
-          //   message: '注册成功',
-          //   type: 'success'
-          // })
-          // setTimeout(this.backToLogin(), 3000)
           this.axios({
             method: 'post',
             url: '/register',

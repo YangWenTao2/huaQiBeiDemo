@@ -63,6 +63,7 @@ export default {
           type: 'error'
         })
       } else {
+        // 测试与后端通讯时请将第67~76行注释掉
         sessionStorage.setItem('isLogin', 'true')
         this.$store.dispatch(
           'asyncUpdateUser',
@@ -75,24 +76,45 @@ export default {
         this.$router.push('/user')
         // this.axios({
         //   method: 'post',
-        //   url: '服务器地址/login',
+        //   url: '/login',
         //   headers: { 'content-type': 'application/x-www-form-urlencoded' },
         //   data: {
         //     email: this.loginForm.email,
-        //     pass: this.loginForm.pass
+        //     password: this.loginForm.pass
         //   }
-        // }).then((response) => {
+        // }).then(response => {
+        //   var state = response.data.state
+        //   if (state === 0) {
+        //     sessionStorage.setItem('isLogin', 'true')
+        //     this.$store.dispatch(
+        //       'asyncUpdateUser',
+        //       {
+        //         name: response.data.name,
+        //         email: response.data.email,
+        //         isVIP: response.data.isvip
+        //       }
+        //     )
+        //     this.$message({
+        //       message: '登陆成功',
+        //       type: 'success'
+        //     })
+        //     setTimeout(() => {
+        //       this.$router.push('/user')
+        //     }, 3000)
+        //   } else if (state === 1) {
+        //     this.$message({
+        //       message: '密码错误',
+        //       type: 'error'
+        //     })
+        //   } else if (state === 2) {
+        //     this.$message({
+        //       message: '用户不存在',
+        //       type: 'error'
+        //     })
+        //   }
+        // }).catch(error => {
         //   this.$message({
-        //     message: '登陆成功',
-        //     type: 'success'
-        //   })
-        //   setTimeout(() => {
-        //     this.$router.push('/')
-        //   }, 3000)
-        // }).catch((error) => {
-        //   this.$message({
-        //     showClose: true,
-        //     message: '邮箱或密码错误',
+        //     message: '登录异常',
         //     type: 'error'
         //   })
         //   console.log(error)

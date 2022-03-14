@@ -43,7 +43,7 @@ def login():
         if password == this_user.Pass:
             return jsonify({"state": 0})
         else:
-            return jsonify({"state": 2})
+            return jsonify({"state": 1})
     else:
         return jsonify({"state": 2})
 

@@ -140,7 +140,32 @@ export default {
       this.$refs.singleTable.setCurrentRow(row)
     },
     handleSearch () {
+      // 测试与后端通讯时请将第144行注释掉
       this.$router.push('/search-result')
+      // this.axios({
+      //   method: 'post',
+      //   url: '/search',
+      //   headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      //   data: {
+      //     searchInput: this.input
+      //   }.then(response => {
+      //     this.$store.dispatch(
+      //       'asyncUpdateCompanyData',
+      //       {
+      //         data1: response.data.data1,
+      //         data2: response.data.data2,
+      //         data3: response.data.data3
+      //       }
+      //     )
+      //     this.$router.push('/search-result')
+      //   }).catch(error => {
+      //     this.$message({
+      //       message: '连接服务器失败',
+      //       type: 'error'
+      //     })
+      //     console.log(error)
+      //   })
+      // })
     },
     toMacroData () {
       this.$router.push('/macro-data')
