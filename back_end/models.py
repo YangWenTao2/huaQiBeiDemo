@@ -17,6 +17,6 @@ class numBeta(db.Model):
 class user(db.Model):
     name=db.Column(db.String(100))
     email =db.Column(db.String(30),primary_key=True)
-    isvip = db.Column(db.String(5))
+    isVip = db.Column(db.String(5))
     Pass = db.Column(db.String(19))
 
