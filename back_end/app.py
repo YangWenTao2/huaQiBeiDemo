@@ -43,7 +43,7 @@ def login():
         if password == this_user.Pass:
             return jsonify({"state": 0})
         else:
-        
+
             return jsonify({"state": 1})
     else:
         return jsonify({"state": 2})
@@ -58,7 +58,9 @@ def update_vip_state():
     this_user.isvip = is_vip
     db.set_trace().commit()
 
-@app.route("/get")
+@app.route("/get",methods=["GET"])
+def get_():
+    return "1"
 
 
 if __name__ == '__main__':
