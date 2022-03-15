@@ -15,17 +15,14 @@
         <el-submenu index="/company-risk-assessment">
           <template slot="title">企业风险评估</template>
           <el-menu-item index="/exchange-rate-risk">汇率风险</el-menu-item>
-          <el-menu-item index="/foreign-exchange-exposure">外汇风险敞口</el-menu-item>
           <el-menu-item index="/stock-volatility">股票波动率</el-menu-item>
-          <el-menu-item index="/stock-sharpe-ratio">股票夏普比率</el-menu-item>
           <el-menu-item index="/financial-leverage">财务杠杆情况</el-menu-item>
-          <el-menu-item index="/management-organization">管理层组织情况</el-menu-item>
         </el-submenu>
         <el-menu-item index="disabled" disabled>生成客户画像</el-menu-item>
         <el-submenu index="user" style="float: right; margin-right: 10px;">
           <template slot="title">
             <i class="el-icon-s-custom" style="margin-right: 15px"></i>
-            <span style="color: white;">{{this.$store.getters.getUser.name}}</span>
+            <span style="color: white;">{{ this.$store.getters.getUser.name }}</span>
           </template>
           <el-menu-item index="/user-center">
             <div style="text-align: center;">用户中心</div>
@@ -64,11 +61,8 @@ export default {
         case '/logout':
           this.$router.push(key); break
         case '/exchange-rate-risk':
-        case '/foreign-exchange-exposure':
         case '/stock-volatility':
-        case '/stock-sharpe-ratio':
         case '/financial-leverage':
-        case '/management-organization':
           if (this.$store.getters.getUser.isVIP === 'true') {
             this.$router.push(key)
           } else {

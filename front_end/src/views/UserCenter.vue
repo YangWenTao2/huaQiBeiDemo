@@ -12,7 +12,7 @@
           <i class="el-icon-user"></i>
           <span>机构名称</span>
         </template>
-        {{this.$store.getters.getUser.name}}
+        {{ this.$store.getters.getUser.name }}
       </el-descriptions-item>
       <el-descriptions-item
         :labelStyle="myLabelStyle"
@@ -21,7 +21,7 @@
           <i class="el-icon-message"></i>
           电子邮箱
         </template>
-        {{this.$store.getters.getUser.email}}
+        {{ this.$store.getters.getUser.email }}
       </el-descriptions-item>
       <el-descriptions-item
         :labelStyle="myLabelStyle"
@@ -72,16 +72,30 @@ export default {
   },
   methods: {
     changeVIPState (callback) {
+      // 测试与后端通讯时请将第76、108、110行注释掉
       this.$store.dispatch('asyncUpdateVIPState', callback)
       // this.axios({
       //   method: 'post',
-      //   url: '服务器地址/updateVIPState',
+      //   url: '/updateVIPState',
       //   headers: { 'content-type': 'application/x-www-form-urlencoded' },
       //   data: {
       //     name: this.$store.getters.getUser.name,
       //     isVIP: callback ? 'true' : 'false'
       //   },
       //   timeout: 1000
+      // }).then(response => {
+      //   this.isVIP = true
+      //   this.$store.dispatch('asyncUpdateVIPState', callback)
+      //   this.$message({
+      //     message: '成功开通会员',
+      //     type: 'success'
+      //   })
+      // }).catch(error => {
+      //   console.log(error)
+      //   this.$message({
+      //     message: '升级会员用户失败',
+      //     type: 'error'
+      //   })
       // })
     },
     goBack () {

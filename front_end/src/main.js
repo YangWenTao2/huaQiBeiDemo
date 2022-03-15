@@ -10,6 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import * as echarts from 'echarts'
 import store from './storage/index.js'
 
+axios.defaults.baseURL = 'http://127.0.0.1:5000'
+
 Vue.use(ElementUI)
 Vue.use(Vuex)
 
