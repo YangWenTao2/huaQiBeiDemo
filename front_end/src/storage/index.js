@@ -11,9 +11,10 @@ const state = {
     isVIP: ''
   },
   companyData: {
-    data1: 0.0,
-    data2: 0.0,
-    data3: 0.0
+    name: '',
+    number: '',
+    beta: [],
+    leverage: []
   }
 }
 

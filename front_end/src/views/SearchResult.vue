@@ -18,7 +18,6 @@
           <el-menu-item index="/stock-volatility">股票波动率</el-menu-item>
           <el-menu-item index="/financial-leverage">财务杠杆情况</el-menu-item>
         </el-submenu>
-        <el-menu-item index="disabled" disabled>生成客户画像</el-menu-item>
         <el-submenu index="user" style="float: right; margin-right: 10px;">
           <template slot="title">
             <i class="el-icon-s-custom" style="margin-right: 15px"></i>
@@ -86,6 +85,7 @@ export default {
 }
 .searchResultBox .el-menu {
   width: 100%;
+  border-bottom: 1px solid #000;
 }
 .searchResultBox .el-page-header {
   line-height: 60px;
@@ -94,9 +94,10 @@ export default {
   color: #fff;
 }
 .searchResultBox #graph-box {
-  margin: 30px 30px;
-  padding: 10px 10px;
+  padding: 40px 40px;
   height: 450px;
+  background-color: #303030;
+  border-bottom: 2px solid #000;
 }
 .searchResultBox .el-menu-item {
   border-radius: 50px;

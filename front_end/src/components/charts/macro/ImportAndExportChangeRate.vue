@@ -5,30 +5,32 @@
 </template>
 
 <script src="echarts.js"></script>
-<script src="theme/vintage.js"></script>
+<script src="theme/dark-bold.js"></script>
 <script>
-require('echarts/theme/vintage')
+require('echarts/theme/dark-bold')
 export default {
   name: 'ImportAndExportChangeRate',
   data () {
-    return {}
+    return {
+      titleText: '进出口变动率'
+    }
   },
   mounted () {
     this.initCharts()
   },
   methods: {
     initCharts () {
-      // 初始化echarts实例
-      var myChart = this.$echarts.init(document.getElementById("4"), 'vintage')
-      // 绘制图表
+      var myChart = this.$echarts.init(document.getElementById("4"), 'dark-bold')
       myChart.setOption({
         title: {
-          text: '进出口变动率'
+          text: this.titleText,
+          padding: 20
         },
         grid: {
-          left: '4%',   //图表距边框的距离
-          right: '4%',
-          bottom: '3%',
+          left: '5%',
+          right: '7%',
+          bottom: '9%',
+          top: '20%',
           containLabel: true
         },
         xAxis: {

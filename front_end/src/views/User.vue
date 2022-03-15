@@ -152,9 +152,10 @@ export default {
       //     this.$store.dispatch(
       //       'asyncUpdateCompanyData',
       //       {
-      //         data1: response.data.data1,
-      //         data2: response.data.data2,
-      //         data3: response.data.data3
+      //         name: response.data.companyName,
+      //         number: response.data.companyStockNumber,
+      //         beta: response.data.betaValues,
+      //         leverage: response.data.financialLeverage
       //       }
       //     )
       //     this.$router.push('/search-result')
