@@ -35,7 +35,8 @@ def register():
 
 @app.route('/login', methods=['POST'])
 def login():
-    data = json.loads(request.form.get('data'))
+    raw_data = list(request.form.to_dict().keys())[0]
+    data = json.loads(raw_data)
     email = data['email']
     password = data['password']
     if models.user.query.filter_by(email=email).first() is not None:
@@ -43,7 +44,6 @@ def login():
         if password == this_user.Pass:
             return jsonify({"state": 0})
         else:
-
             return jsonify({"state": 1})
     else:
         return jsonify({"state": 2})
@@ -51,14 +51,82 @@ def login():
 
 @app.route('/updateVIPState', methods=['POST'])
 def update_vip_state():
-    data = json.loads(request.form.get('data'))
+    raw_data = list(request.form.to_dict().keys())[0]
+    data = json.loads(raw_data)
     email = data['email']
     is_vip = data['isVIP']
     this_user = models.user.query.get(email)
     this_user.isvip = is_vip
     db.set_trace().commit()
 
-@app.route("/get",methods=["GET"])
+
+@app.route('/search', methods=['POST'])
+def return_search_result():
+    raw_data = list(request.form.to_dict().keys())[0]
+    data = json.loads(raw_data)
+    search_input = data['searchInput']
+    # todo
+    # 访问数据库查询、数据处理与返回
+    return jsonify(
+        {'companyName': ''},
+        {'companyStockNumber': ''},
+        {'betaValues': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        {'exchangeRateRisk': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        {'financialLeverage': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]}
+    )
+
+
+@app.route('/get-macro', methods=['GET'])
+def return_search_result():
+    # todo
+    # 访问数据库查询、数据处理与返回
+    return jsonify(
+        # GDP变动率
+        {'GDPChangeRate': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        # 外汇汇率波动率
+        {'ForeignExchangeRateFluctuation': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        # 结售汇变动率
+        {'ExchangeSettlementChangeRate': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        # 进出口变动率
+        {'ImportAndExportChangeRate': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]},
+        # 社会销售品零售总额变动率
+        {'TotalSalesChangeRate': [
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''},
+            {'date': '', 'value': ''}
+        ]}
+    )
+
+
+@app.route("/get", methods=["GET"])
 def get_():
     return "1"
 
