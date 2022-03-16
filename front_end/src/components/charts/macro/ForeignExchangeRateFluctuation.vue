@@ -20,7 +20,10 @@ export default {
   },
   methods: {
     initCharts () {
-      var myChart = this.$echarts.init(document.getElementById("2"), 'dark-bold')
+      var myChart = this.$echarts.init(
+        document.getElementById("2"),
+        'dark-bold'
+      )
       myChart.setOption({
         title: {
           text: this.titleText,

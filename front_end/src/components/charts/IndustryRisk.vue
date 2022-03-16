@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="main" class="main_container"></div>
+    <div id="industryRisk" class="main_container"></div>
   </div>
 </template>
 
@@ -25,7 +25,10 @@ export default {
   },
   methods: {
     initCharts() {
-      var myChart = this.$echarts.init(document.getElementById("main"), "vintage")
+      var myChart = this.$echarts.init(
+        document.getElementById("industryRisk"),
+        "vintage"
+      )
       myChart.setOption({
         title: {
           text: this.titleText,

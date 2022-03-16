@@ -11,12 +11,9 @@ import SearchResult from '@/views/SearchResult'
 import UserAgreement from '@/views/UserAgreement'
 import IndustryRisk from '@/components/charts/IndustryRisk'
 import StockVolatility from '@/components/charts/StockVolatility'
-import StockSharpeRatio from '@/components/charts/StockSharpeRatio'
 import ExchangeRateRisk from '@/components/charts/ExchangeRateRisk'
 import FinancialLeverage from '@/components/charts/FinancialLeverage'
 import CompanyInformation from '@/components/charts/CompanyInformation'
-import ManagementOrganization from '@/components/charts/ManagementOrganization'
-import ForeignExchangeExposure from '@/components/charts/ForeignExchangeExposure'
 
 Vue.use(Router)
 
@@ -78,24 +75,9 @@ export default new Router({
           component: FinancialLeverage
         },
         {
-          path: '/foreign-exchange-exposure',
-          name: 'foreign-exchange-exposure',
-          component: ForeignExchangeExposure
-        },
-        {
-          path: '/management-organization',
-          name: 'management-organization',
-          component: ManagementOrganization
-        },
-        {
           path: '/stock-volatility',
           name: 'stock-volatility',
           component: StockVolatility
-        },
-        {
-          path: '/stock-sharpe-ratio',
-          name: 'stock-sharpe-ratio',
-          component: StockSharpeRatio
         },
         {
           path: '/industry-risk',
