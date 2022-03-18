@@ -23,7 +23,7 @@ class user(db.Model):
 class num_leverage(db.Model):
     CompanyNo = db.Column(db.String(6), primary_key=True)
     EndDate = db.Column(db.TEXT)
-    num_leverage = db.Column(db.Float)
+    leverage = db.Column(db.Float)
 
 
 class numName(db.Model):

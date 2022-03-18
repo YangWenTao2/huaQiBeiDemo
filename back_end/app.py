@@ -67,6 +67,15 @@ def return_search_result():
     search_input = data['searchInput']
     # todo
     # 访问数据库查询、数据处理与返回
+    name="中天科技"
+    companyNo=models.numName.query.filter_by(CompangName=name).first().CompanyNo
+    Export_importWithData=models.export_importWithData.query.filter(CompanyNo=companyNo).first()
+    num_leverage=models.num_leverage.query.filter(CompanyNo=companyNo).first().leverge
+    beta=models.numBeta.query.filter(CompanyNO=companyNo).first.beta
+
+
+
+
     return jsonify(
         {'companyName': ''},
         {'companyStockNumber': ''},
@@ -92,6 +101,12 @@ def return_search_result():
 def return_search_result():
     # todo
     # 访问数据库查询、数据处理与返回
+    name = "中天科技"
+    companyNo = models.numName.query.filter_by(CompangName=name).first().CompanyNo
+    Export_importWithData = models.export_importWithData.query.filter(CompanyNo=companyNo).first()
+    num_leverage = models.num_leverage.query.filter(CompanyNo=companyNo).first().leverge
+    GDPChangeRate=Export_importWithData.
+
     return jsonify(
         # GDP变动率
         {'GDPChangeRate': [
@@ -125,10 +140,6 @@ def return_search_result():
         ]}
     )
 
-
-@app.route("/get", methods=["GET"])
-def get_():
-    return "1"
 
 
 if __name__ == '__main__':
