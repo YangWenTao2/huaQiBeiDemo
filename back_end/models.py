@@ -28,11 +28,11 @@ class num_leverage(db.Model):
 
 class numName(db.Model):
     CompanyNo = db.Column(db.String(6))
-    CompanyName = db.Column(db.String(8))
+    CompanyName = db.Column(db.String(8),primary_key=True)
 
 
 class export_importWithData(db.Model):
-    EndDate = db.Column(db.String(11))
+    EndDate = db.Column(db.String(11),primary_key=True)
     Export = db.Column(db.Float)
     Import = db.Column(db.Float)
     Retail = db.Column(db.Float)
@@ -50,6 +50,6 @@ class export_importWithData(db.Model):
     Sale = db.Column(db.Float)
 
 class comnumYield(db.Model):
-    CompanyNo = db.Column(db.String(6))
+    CompanyNo = db.Column(db.String(6),primary_key=True)
     EndDate = db.Column(db.String(11))
     Yield = db.Column(db.Float)

@@ -71,42 +71,29 @@ def return_search_result():
     companyNo=models.numName.query.filter_by(CompangName=name).first().CompanyNo
     Export_importWithData=models.export_importWithData.query.filter(CompanyNo=companyNo).first()
     num_leverage=models.num_leverage.query.filter(CompanyNo=companyNo).first().leverge
-    beta=models.numBeta.query.filter(CompanyNO=companyNo).first.beta
-
-
-
-
+    beta=models.numBeta.query.filter(CompanyNo=companyNo).first().beta
     return jsonify(
-        {'companyName': ''},
-        {'companyStockNumber': ''},
-        {'betaValues': [
-            {'date': '', 'value': ''},
-            {'date': '', 'value': ''},
-            {'date': '', 'value': ''}
-        ]},
+        {'companyName': name},
+        {'companyStockNumber': companyNo},
+
         {'exchangeRateRisk': [
             {'date': '', 'value': ''},
             {'date': '', 'value': ''},
             {'date': '', 'value': ''}
-        ]},
-        {'financialLeverage': [
-            {'date': '', 'value': ''},
-            {'date': '', 'value': ''},
-            {'date': '', 'value': ''}
-        ]}
+        ]},  betaValues=beta,
+        financialLeverage=num_leverage
     )
 
 
 @app.route('/get-macro', methods=['GET'])
-def return_search_result():
+def returnsSearchResult():
     # todo
     # 访问数据库查询、数据处理与返回
     name = "中天科技"
     companyNo = models.numName.query.filter_by(CompangName=name).first().CompanyNo
     Export_importWithData = models.export_importWithData.query.filter(CompanyNo=companyNo).first()
     num_leverage = models.num_leverage.query.filter(CompanyNo=companyNo).first().leverge
-    GDPChangeRate=Export_importWithData.
-
+    GDPChangeRate=Export_importWithData
     return jsonify(
         # GDP变动率
         {'GDPChangeRate': [
